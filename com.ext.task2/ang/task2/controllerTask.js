@@ -23,10 +23,10 @@ $scope.cantidad = 10;
 		console.log(result.values);
 			var error = ''
 			if (result.is_error){
-				error = 'Error, I proceed to set a costum list of memberships: ' + result.error_message;
+				error = 'Error, I proceed to set a custom list of memberships: ' + result.error_message;
 			} else {
 				if (result.count === 0){
-					error = 'No memberships were found in the data base, I proceed to set a costum list of memberships.';
+					error = 'No memberships were found in the data base, I proceed to set a custom list of memberships.';
 				} else 
 					for (var i=0;i<result.values.length; i++ )
 						$scope.membership.push({id: result.values[i].id, name: result.values[i]['contact_id.display_name'], type: result.values[i]['membership_type_id.name'], start: $filter('date')(new Date(result.values[i].start_date),'dd/MM/yyyy'), end: $filter('date')(new Date(result.values[i].end_date),'dd/MM/yyyy')});
