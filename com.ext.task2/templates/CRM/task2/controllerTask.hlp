@@ -1,0 +1,3 @@
+{htxt id="date"}
+{ts}Set a date range for the search. Format 'dd/MM/yyyy'. Memberships displayed will have their start and end date within the range selected.{/ts}
+{/htxt}

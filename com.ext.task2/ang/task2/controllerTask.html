@@ -1,0 +1,67 @@
+<div class="crm-container">
+	<div crm-ui-debug="membership"></div>
+
+	<form name="myForm" crm-ui-id-scope>
+    <div class="help">
+      <p>{{ts('Create a new CiviCRM extension that creates a new page in CiviCRM that displays a list of the current memberships.')}}</p>
+      <p>{{ts('Create a simple filter on the page to filter by membership start date from and to.')}}</p>
+    </div>
+
+    <div crm-ui-accordion="{title: ts('Date Range'), help: hs('date')}">
+      <div class="crm-block">
+        <div class="crm-group" style="margin: 15px 0">
+          <div>
+			<span style="margin: 0 10px 0 30px;">Start Date:</span>
+            <input
+              crm-ui-id="myForm.start_date"
+              name="start_date"
+              id="start_date"
+              ng-model="range.start"
+              class="crm-form-text"
+              placeholder="{{ts('Start Date')}}
+			  type="text" 
+			  required
+			  pattern='(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}'"
+              />
+			<span style="margin: 0 10px 0 30px;">End Date:</span>
+            <input
+              crm-ui-id="myForm.end_date"
+              name="end_date"
+              ng-model="range.end"
+              class="crm-form-text"
+              placeholder="{{ts('End Date')}}
+			  type="text" 
+			  required
+			  pattern='(0[1-9]|1[0-9]|2[0-9]|3[01])/(0[1-9]|1[012])/[0-9]{4}'"
+              />
+			<button style="margin: 0 50px;" ng-click="filter()"ng-disabled="!myForm.$valid">{{ts('Filter ')}}</button>
+          </div>		  
+        </div>
+      </div>
+    </div>
+	</form>
+
+	<div class="crm-search-results" style="margin-top: 20px":>
+		<table style="position: relative;">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="odd-row" ng-repeat="data in membershipFiltered">
+					<td>{{data.id}}</td>
+					<td>{{data.name}}</td>
+					<td>{{data.type}}</td>
+					<td>{{data.start}}</td>
+					<td>{{data.end}}</td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+
+</div>
